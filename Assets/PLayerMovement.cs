@@ -24,11 +24,11 @@ public class PLayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(0, 0, movementSpeed);
+            transform.Translate(0, 0, -movementSpeed);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(0, 0, -movementSpeed);
+            transform.Translate(0, 0, movementSpeed);
         }
         if (Input.GetKey(KeyCode.D) && hasJump==maxJumps)
         {
