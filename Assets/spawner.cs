@@ -7,20 +7,42 @@ public class spawner : MonoBehaviour
 {
 
     public GameObject EnemySpawner;
-    public int CantEnemyWave = 5;
+    public int CantEnemyWave = 1;
     int CurrentWave = 0;
      public int FinalWave = 4;
     GameObject clon;
     public float RestTime;
     public int CloneAmount;
+    public bool waited = true;
 
 
     void Update()
     {
-        while (FinalWave > CurrentWave)
+        if (waited)
         {
-            clon = Instantiate(EnemySpawner);
-            CurrentWave++;
-        } 
+            while (FinalWave > CurrentWave)
+            {
+                Instantiate(EnemySpawner);
+                CurrentWave++;
+                waited = false;
+
+            }
+        }
+        if (!waited)
+        {
+            StartCoroutine(Wait());
+        }
+        
+
+        if (CurrentWave >= FinalWave)
+        {
+
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(5);
+        waited = true;
     }
 }

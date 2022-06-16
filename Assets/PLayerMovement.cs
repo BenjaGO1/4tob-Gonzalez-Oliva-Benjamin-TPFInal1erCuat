@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PLayerMovement : MonoBehaviour
 {
@@ -49,6 +50,11 @@ public class PLayerMovement : MonoBehaviour
         if(col.gameObject.name == "ground")
         {
             hasJump = maxJumps;
+        }
+        if (col.gameObject.name == "enemy")
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("Perdiste");
         }
     }
 }
