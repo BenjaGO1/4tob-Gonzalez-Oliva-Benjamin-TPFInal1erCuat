@@ -10,6 +10,7 @@ public class PLayerMovement : MonoBehaviour
     public float rotationSpeed;
     public float jumpForce;
     public int maxJumps;
+    public int counter = 2;
 
     int hasJump;
     Rigidbody rb;
@@ -44,6 +45,10 @@ public class PLayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             hasJump--;
         }
+        if (counter <= 0)
+        {
+            SceneManager.LoadScene("Ganaste");
+        }
     }
     private void OnCollisionEnter(Collision col)
     {
@@ -51,9 +56,9 @@ public class PLayerMovement : MonoBehaviour
         {
             hasJump = maxJumps;
         }
-        if (col.gameObject.name == "enemy")
+        if (col.gameObject.name == "Enemy")
         {
-            Destroy(gameObject);
+            Debug.Log("Impactaron");
             SceneManager.LoadScene("Perdiste");
         }
     }
