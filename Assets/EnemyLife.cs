@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
-    public int health = 50;
-    //public ParticleSystem deathEffect;
-    public void TakeDamage (int damage)
-    {
-        health -= damage;
+    public float health = 50f;
 
-        if (health <= 0)
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+        if (health <= 0f)
         {
             Die();
         }
@@ -18,7 +16,6 @@ public class EnemyLife : MonoBehaviour
 
     void Die()
     {
-        //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     
