@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,43 +6,52 @@ using UnityEngine.SceneManagement;
 public class spawner : MonoBehaviour
 {
 
-    public GameObject EnemySpawner;
+    public GameObject EnemyPrefab;
+    public Transform[] spawnPos;
     public int CantEnemyWave = 1;
     int CurrentWave = 0;
-     public int FinalWave = 4;
-    GameObject clon;
+    int FinalWave = 5;
+    float CurrentRestTime = 0;
     public float RestTime;
-    public int CloneAmount;
-    public bool waited = true;
 
-
+    
     void Update()
     {
-        if (waited)
-        {
-            while (FinalWave > CurrentWave)
-            {
-                Instantiate(EnemySpawner);
-                CurrentWave++;
-                waited = false;
-
+    var enemiesInScene  = FindObjectsOfType<Enemy>();
+    if (enemiesInScene.Length == 0)
+    {
+    currentRestTime += Time.deltaTime;
+    if(currentRestTime > restTime)
+    {
+     for (int i = 0; i < cantEnemigosWave; i++)
+                {
+                    Create();
+                }
+                currentRestTime = 0;
+                CurrentWave ++;
+                cantEnemigosWave += Mathf.RoundToInt(cantEnemigosWave / 2);
             }
         }
-        if (!waited)
+        else if (CurrentWave == FinalWave)
         {
-            StartCoroutine(Wait());
+            destruir();
+            SceneManager.LoadScene("Ganaste");
         }
-        
 
-        if (CurrentWave >= FinalWave)
-        {
-
-        }
     }
 
-    IEnumerator Wait()
+    void Create()
     {
-        yield return new WaitForSeconds(5);
-        waited = true;
+        float y = Random.Range(spawnPos[0].position.y, spawnPos[1].position.y);
+        float x = Random.Range(spawnPos[0].position.x, spawnPos[1].position.x);
+        float z = Random.Range(spawnPos[0].position.z, spawnPos[1].position.z);
+        Vector3 posicion = new Vector3(x, y, z);
+        Instantiate(EnemigoPrefab, posicion, Quaternion.identity);
+    }
+    void destruir ()
+    {
+        Destroy(gameObject);
     }
 }
+
+  
