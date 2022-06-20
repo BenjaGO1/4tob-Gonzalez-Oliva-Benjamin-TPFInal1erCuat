@@ -17,19 +17,19 @@ public class spawner : MonoBehaviour
     
     void Update()
     {
-    var enemiesInScene  = FindObjectsOfType<Enemy>();
+    var enemiesInScene  = FindObjectsOfType<EnemyLife>();
     if (enemiesInScene.Length == 0)
     {
-    currentRestTime += Time.deltaTime;
-    if(currentRestTime > restTime)
+    CurrentRestTime += Time.deltaTime;
+    if(CurrentRestTime > RestTime)
     {
-     for (int i = 0; i < cantEnemigosWave; i++)
+     for (int i = 0; i < CantEnemyWave; i++)
                 {
                     Create();
                 }
-                currentRestTime = 0;
+                CurrentRestTime = 0;
                 CurrentWave ++;
-                cantEnemigosWave += Mathf.RoundToInt(cantEnemigosWave / 2);
+                CantEnemyWave += Mathf.RoundToInt(CantEnemyWave / 2);
             }
         }
         else if (CurrentWave == FinalWave)
@@ -46,7 +46,7 @@ public class spawner : MonoBehaviour
         float x = Random.Range(spawnPos[0].position.x, spawnPos[1].position.x);
         float z = Random.Range(spawnPos[0].position.z, spawnPos[1].position.z);
         Vector3 posicion = new Vector3(x, y, z);
-        Instantiate(EnemigoPrefab, posicion, Quaternion.identity);
+        Instantiate(EnemyPrefab, posicion, Quaternion.identity);
     }
     void destruir ()
     {

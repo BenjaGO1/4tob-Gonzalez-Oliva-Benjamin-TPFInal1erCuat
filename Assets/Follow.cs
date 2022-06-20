@@ -13,7 +13,6 @@ public class Follow : MonoBehaviour
         enemigo = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!dentro)

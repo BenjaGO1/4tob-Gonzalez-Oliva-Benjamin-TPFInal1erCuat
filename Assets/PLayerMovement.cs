@@ -11,6 +11,7 @@ public class PLayerMovement : MonoBehaviour
     public float jumpForce;
     public int maxJumps;
     public int counter = 2;
+    public GameObject Enemy;
 
     int hasJump;
     Rigidbody rb;
@@ -45,21 +46,12 @@ public class PLayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             hasJump--;
         }
-        if (counter <= 0)
-        {
-            SceneManager.LoadScene("Ganaste");
-        }
     }
     private void OnCollisionEnter(Collision col)
     {
         if(col.gameObject.name == "ground")
         {
             hasJump = maxJumps;
-        }
-        if (col.gameObject.name == "Enemy")
-        {
-            Debug.Log("Impactaron");
-            SceneManager.LoadScene("Perdiste");
         }
     }
 }
