@@ -744,7 +744,7 @@ MonoBehaviour:
   - {fileID: 175838078}
   - {fileID: 1144434487}
   CantEnemyWave: 3
-  FinalWave: 5
+  FinalWave: 2
   RestTime: 2
 --- !u!4 &1373907124
 Transform:
@@ -1143,7 +1143,7 @@ PrefabInstance:
     - target: {fileID: 4398770859491497078, guid: eedffb898a754834d8aa112c190977ce,
         type: 3}
       propertyPath: fireRate
-      value: 5
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4398770861158817251, guid: eedffb898a754834d8aa112c190977ce,
         type: 3}
