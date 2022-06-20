@@ -10,7 +10,7 @@ public class spawner : MonoBehaviour
     public Transform[] spawnPos;
     public int CantEnemyWave = 1;
     int CurrentWave = 0;
-    int FinalWave = 5;
+    public int FinalWave = 5;
     float CurrentRestTime = 0;
     public float RestTime;
 

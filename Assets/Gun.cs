@@ -8,12 +8,12 @@ public class Gun : MonoBehaviour
     public float impactForce = 30f;
     public float fireRate = 15f;
 
-    public Camera fpsCam;
-    public ParticleSystem shoot;
+    public AudioSource source;
+    public AudioClip clip;
 
+    public Camera fpsCam;
     private float nextTimetoFire = 0f;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time >= nextTimetoFire)
@@ -25,8 +25,7 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
-        shoot.Play();
-
+        PlayClip();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
@@ -42,5 +41,10 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }
+    }
+    public void PlayClip()
+    {
+        source.clip = clip;
+        source.Play();
     }
 }

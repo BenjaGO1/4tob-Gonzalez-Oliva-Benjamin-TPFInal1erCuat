@@ -24,7 +24,6 @@ public class EnemyLife : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
-        
     }
 
     private void OnCollisionEnter(Collision col)
