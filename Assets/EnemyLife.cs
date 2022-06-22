@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class EnemyLife : MonoBehaviour
 {
     public float health = 50f;
-    public float speed;
+    //public float speed;
 
     public void TakeDamage(float amount)
     {
@@ -16,10 +16,10 @@ public class EnemyLife : MonoBehaviour
         }
          
     }
-    void Update()
-    {
-        transform.Translate(0, 0, speed * Time.deltaTime);
-    }
+    //void Update()
+    //{
+    //    transform.Translate(0, 0, speed * Time.deltaTime);
+    //}
 
     void Die()
     {
@@ -32,6 +32,11 @@ public class EnemyLife : MonoBehaviour
         {
             SceneManager.LoadScene("Perdiste");
         }
+        if (col.gameObject.name == "Wall Lose")
+        {
+            SceneManager.LoadScene("Perdiste");
+        }
+
     }
 
 

@@ -11,7 +11,7 @@ public class spawner : MonoBehaviour
     public int CantEnemyWave = 1;
     int CurrentWave = 0;
     public int FinalWave = 5;
-    float CurrentRestTime = 0;
+    float CurrentRestTime = 2;
     public float RestTime;
 
     
