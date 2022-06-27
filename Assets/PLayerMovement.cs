@@ -11,7 +11,6 @@ public class PLayerMovement : MonoBehaviour
     public float jumpForce;
     public int maxJumps;
     public int counter = 2;
-    public GameObject Enemy;
 
     int hasJump;
     Rigidbody rb;
@@ -22,7 +21,7 @@ public class PLayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
